@@ -1,0 +1,240 @@
+<header class="header-content">
+  <div class="logo-content">
+    <img
+      src="../../assets/images/logo.png"
+      width="50px"
+      alt="Employee_Payroll_logo"
+    />
+    <div>
+      <span class="emp-text">EMPLOYEE</span><br />
+      <span class="emp-text emp-payroll">PAYROLL</span>
+    </div>
+  </div>
+</header>
+
+<div class="form-content">
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-head">Employee Payroll Form</div>
+    <div class="row-content">
+      <label class="label text" for="name">Name</label>
+      <input
+        class="input"
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Your name..."
+        required
+        formControlName="name"
+      />
+    </div>
+
+    <div class="row-content">
+      <label class="label text" for="profileImage" id="profile"
+        >Profile image</label
+      >
+      <div class="profile-radio-content">
+        <label>
+          <input
+            type="radio"
+            id="profile1"
+            name="profileImage"
+            value="../../assets/profile-images/Ellipse -3.png"
+            required
+            formControlName="profileImage"
+          />
+          <img
+            class="profile"
+            id="image1"
+            src="../../assets/profile-images/Ellipse -3.png"
+          />
+        </label>
+        <label>
+          <input
+            type="radio"
+            id="profile2"
+            name="profileImage"
+            value="../../assets/profile-images/Ellipse 1.png"
+            required
+            formControlName="profileImage"
+          />
+          <img
+            class="profile"
+            id="image2"
+            src="../../assets/profile-images/Ellipse 1.png"
+          />
+        </label>
+        <label>
+          <input
+            type="radio"
+            id="profile3"
+            name="profileImage"
+            value="../../assets/profile-images/Ellipse -8.png"
+            required
+            formControlName="profileImage"
+          />
+          <img
+            class="profile"
+            id="image2"
+            src="../../assets/profile-images/Ellipse -8.png"
+          />
+        </label>
+        <label>
+          <input
+            type="radio"
+            id="profile4"
+            name="profileImage"
+            value="../../assets/profile-images/Ellipse -7.png"
+            required
+            formControlName="profileImage"
+          />
+          <img
+            class="profile"
+            id="image2"
+            src="../../assets/profile-images/Ellipse -7.png"
+          />
+        </label>
+      </div>
+    </div>
+
+    <div class="row-content">
+      <label for="gender" class="label text">Gender: </label>
+      <div>
+        <input
+          type="radio"
+          name="gender"
+          id="male"
+          value="male"
+          formControlName="gender"
+        />
+        <label for="male" class="text">Male</label>
+        <input
+          type="radio"
+          name="gender"
+          id="female"
+          value="female"
+          formControlName="gender"
+        />
+        <label for="female" class="text">Female</label>
+      </div>
+    </div>
+
+    <div class="row-content">
+      <label for="department" class="label text" id="dept">Department</label>
+
+      <div *ngFor="let control of departmentArray.controls; let i = index">
+        <input
+          type="checkbox"
+          class="checkbox"
+          [formControl]="control"
+          id="departmentCheckbox{{ i }}"
+          (change)="getSelectedDepartmentValues()"
+        />
+        <label for="departmentCheckbox{{ i }}" class="text">{{
+          departmentList[i]
+        }}</label>
+      </div>
+    </div>
+
+    <div class="row-content">
+      <label class="label text" for="salary">Salary</label>
+      <select id="salary" name="salary" formControlName="salary">
+        <option value="" disabled selected>Select Salary</option>
+        <option value="300000">300000</option>
+        <option value="325000">325000</option>
+        <option value="350000">350000</option>
+        <option value="375000">375000</option>
+        <option value="400000">400000</option>
+        <option value="475000">475000</option>
+        <option value="500000">500000</option>
+      </select>
+    </div>
+
+    <div class="row-content">
+      <label for="startdate" class="label text">Choose Date:</label>
+      <div>
+        <select id="day" name="day" formControlName="day">
+          <option value="" disabled selected>Day</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+        </select>
+        <select id="month" name="month" formControlName="month">
+          <option value="" disabled selected>Month</option>
+          <option value="Jan">January</option>
+          <option value="Feb">February</option>
+          <option value="Mar">March</option>
+          <option value="Apr">April</option>
+          <option value="May">May</option>
+          <option value="Jun">June</option>
+          <option value="Jul">July</option>
+          <option value="Aug">August</option>
+          <option value="Sep">September</option>
+          <option value="Oct">October</option>
+          <option value="Nov">November</option>
+          <option value="Dec">December</option>
+        </select>
+        <select id="year" name="year" formControlName="year">
+          <option value="" disabled selected>Year</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row-contnt">
+      <label for="notes" class="label text">Notes:</label>
+      <textarea
+        name="Notes"
+        id="notes"
+        class="input"
+        placeholder=""
+        style="height: 100px"
+        formControlName="notes"
+      ></textarea>
+    </div>
+
+    <div class="buttonParent">
+      <a class="resetButton button cancelButton" routerLink="/home">Cancel</a>
+      <div class="submit-reset">
+        <button class="button submitButton" type="submit" id="submitButton">
+          Submit
+        </button>
+        <button type="reset" class="resetButton button" (click)="reset()">
+          Reset
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
