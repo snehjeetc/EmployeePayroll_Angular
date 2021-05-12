@@ -1,1 +1,54 @@
-<p>home works!</p>
+<header class="header-content">
+  <div class="logo-content">
+    <img
+      src="../../../assets/images/logo.png"
+      width="50px"
+      alt="Employee_Payroll_logo"
+    />
+    <div>
+      <span class="emp-text">EMPLOYEE</span><br />
+      <span class="emp-text emp-payroll">PAYROLL</span>
+    </div>
+  </div>
+</header>
+
+<div class="main-content">
+  <div class="header-content">
+    <div class="emp-detail-text">Employee Details</div>
+    <div>
+      <a routerLink="/addemployee" class="add-button">
+        <img src="../../../assets/icons/add-24px.svg" alt="" />
+        Add User
+      </a>
+    </div>
+  </div>
+</div>
+<div class="table-main">
+  <table class="table" id="display">
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Department</th>
+      <th>Salary</th>
+      <th>StartDate</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let employee of employeePayrollList">
+      <td><img class="profile" src="{{ employee.profileImage }}" /></td>
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.gender }}</td>
+      <td>{{ employee.departments }}</td>
+      <td>{{ employee.salary }}</td>
+      <td>{{ employee.startDate }}</td>
+      <td>
+        <a class="add-buttom delete">
+          <img src="../../../assets/icons/delete-black-18dp.svg" alt="Delete" />
+        </a>
+        <a class="add-buttom edit"
+          ><img src="../../../assets/icons/create-black-18dp.svg" alt="Edit"
+        /></a>
+      </td>
+    </tr>
+  </table>
+</div>

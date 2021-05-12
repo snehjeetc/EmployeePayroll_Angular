@@ -11,4 +11,8 @@ export class EmployeeserviceService {
   addEmployee(data){
     return this.httpservice.Post('', data);
   }
+
+  getEmployeePayrollData(){
+    return this.httpservice.Get('');
+  }
 }

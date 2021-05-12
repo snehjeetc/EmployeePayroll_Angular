@@ -15,8 +15,6 @@ export class HttpserviceService {
   let options = {
       headers: new HttpHeaders({
         'Content-Type' : 'application/json',
-        'Authorization' : localStorage.getItem('token'),
-
       })
     };
     return this.httpservice.get<any>(this.baseUrl + url, options);

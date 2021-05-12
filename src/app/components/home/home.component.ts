@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeserviceService } from 'src/app/services/employeeservice/employeeservice.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  employeePayrollList: any[] = [];
+
+  constructor(private employeePayrollService : EmployeeserviceService) { }
 
   ngOnInit(): void {
+    this.getEmployeePayrollData();
+  }
+
+  getEmployeePayrollData(){
+    this.employeePayrollService.getEmployeePayrollData().subscribe((response:any)=>{
+      this.employeePayrollList = response.data;
+      console.log(response);
+    })
   }
 
 }
