@@ -43,10 +43,17 @@
       <td>{{ employee.startDate }}</td>
       <td>
         <a class="add-buttom delete">
-          <img src="../../../assets/icons/delete-black-18dp.svg" alt="Delete" />
+          <img
+            src="../../../assets/icons/delete-black-18dp.svg"
+            (click)="deleteEmployee(employee.id)"
+            alt="Delete"
+          />
         </a>
         <a class="add-buttom edit"
-          ><img src="../../../assets/icons/create-black-18dp.svg" alt="Edit"
+          ><img
+            src="../../../assets/icons/create-black-18dp.svg"
+            (click)="updateEmployee(employee)"
+            alt="Edit"
         /></a>
       </td>
     </tr>

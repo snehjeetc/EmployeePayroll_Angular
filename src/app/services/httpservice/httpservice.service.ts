@@ -8,33 +8,29 @@ import { Observable } from 'rxjs';
 })
 export class HttpserviceService {
 
+  options = {
+      headers: new HttpHeaders({
+        'Content-Type' : 'application/json',
+      })
+    };
+  
   baseUrl = environment.BaseUrl;
   constructor(private httpservice : HttpClient) { }
   
   Get(url): Observable<any>{
-  let options = {
-      headers: new HttpHeaders({
-        'Content-Type' : 'application/json',
-      })
-    };
-    return this.httpservice.get<any>(this.baseUrl + url, options);
+    return this.httpservice.get<any>(this.baseUrl + url, this.options);
   }
 
-  Update(){
-
+  Update(id, data){
+    return this.httpservice.put(this.baseUrl+"/"+id, data,this.options);
   }
 
-  Delete(){
-
+  Delete(id){
+    return this.httpservice.delete(this.baseUrl+"/"+id);
   }
 
   Post(url, data){
-    let options = {
-      headers: new HttpHeaders({
-        'Content-Type' : 'application/json',
-      })
-    };
-    return this.httpservice.post(this.baseUrl + url, data, options);
+    return this.httpservice.post(this.baseUrl + url, data, this.options);
   }
 
 }

@@ -15,4 +15,12 @@ export class EmployeeserviceService {
   getEmployeePayrollData(){
     return this.httpservice.Get('');
   }
+
+  updateEmployeePayroll(id, data){
+    return this.httpservice.Update(id, data);
+  }
+
+  delete(id){
+    return this.httpservice.Delete(id);
+  }
 }
