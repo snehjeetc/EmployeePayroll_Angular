@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeserviceService } from 'src/app/services/employeeservice/employeeservice.service';
 import { MatDialog } from '@angular/material/dialog'
 import { UpdateComponent } from '../update/update.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +14,13 @@ export class HomeComponent implements OnInit {
   employeePayrollList: any[] = [];
 
   constructor(private employeePayrollService : EmployeeserviceService, private dialog : MatDialog,
-    private router : Router) { }
+    private router : Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
     this.getEmployeePayrollData();
   }
 
@@ -36,7 +40,5 @@ export class HomeComponent implements OnInit {
       width: '70%',
       data: {employee}
     })
-    this.router.navigateByUrl('/home');
   }
-
 }
