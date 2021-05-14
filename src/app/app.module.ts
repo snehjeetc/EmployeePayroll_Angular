@@ -18,7 +18,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     AppComponent,
     HomeComponent,
     AddEmployeeComponent,
-    UpdateComponent
+    UpdateComponent,
   ],
   imports: [
     BrowserModule,

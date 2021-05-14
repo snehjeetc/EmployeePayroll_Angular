@@ -85,7 +85,6 @@ export class UpdateComponent implements OnInit {
       console.log(obj);
       this.employeeService.updateEmployeePayroll(this.data.employee.id, obj).subscribe((response) =>{
          console.log("Response : " , response);
-         this.router.navigateByUrl('/home');
          this.dialogRef.close();
        })
     }

@@ -11,7 +11,7 @@ const routes: Routes = [
     pathMatch:"full"
   },
   {
-    path:'addemployee',
+    path:'add',
     component: AddEmployeeComponent
   },
   {
@@ -21,7 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

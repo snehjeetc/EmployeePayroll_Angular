@@ -32,13 +32,23 @@ export class HomeComponent implements OnInit {
   }
 
   deleteEmployee(id){
-    this.employeePayrollService.delete(id);
+    this.employeePayrollService.delete(id).subscribe((response)=>{
+      console.log(response);
+      this.getEmployeePayrollData();
+    }, (error)=>{
+      console.log(error);
+    });
+    ;
   }
 
   updateEmployee(employee){
     const dialogBox = this.dialog.open(UpdateComponent, {
-      width: '70%',
+      // width: '70%',
       data: {employee}
     })
+    dialogBox.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.getEmployeePayrollData();
+    });
   }
 }

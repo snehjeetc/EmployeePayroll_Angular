@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
 import { EmployeeserviceService } from 'src/app/services/employeeservice/employeeservice.service';
 
 const REGEX_NAME = new RegExp("^[A-Z][a-z]{2,}$");
@@ -18,7 +19,8 @@ export class AddEmployeeComponent implements OnInit {
   selectedDepartments = [];
   departmentSelectionError = true;
 
-  constructor(private formBuilder: FormBuilder, private employeeservice : EmployeeserviceService) {
+  constructor(private formBuilder: FormBuilder, private employeeservice : EmployeeserviceService,
+    private router : Router) {
     this.form = this.formBuilder.group({
       name : ['', [Validators.required, Validators.pattern(REGEX_NAME)]],
       profileImage: [''],
@@ -51,6 +53,9 @@ export class AddEmployeeComponent implements OnInit {
       console.log(reqObj);
       this.employeeservice.addEmployee(reqObj).subscribe((response:any)=>{
         console.log("Response: " , response);
+        this.router.navigateByUrl('/home');
+      }, (error)=>{
+        console.log(error);
       });
     }
   }
